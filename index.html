@@ -1,15 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <title>Tetris</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Trade Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Customizations for Tailwind can go here if needed
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Roboto', 'Noto Sans KR', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css"> <!-- For any custom css -->
+    <script defer src="js/script.js"></script> <!-- Defer script loading -->
 </head>
-<body>
-  <h1>Tetris</h1>
-  <div>
-    Score: <span id="score">0</span>
-  </div>
-  <canvas id="tetris" width="240" height="400"></canvas>
-  <script src="script.js"></script>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- F2: Navigation Bar (Sticky) -->
+    <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-gray-900" data-lang-key="companyName">Global Trade Solutions</div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-gray-900" data-lang-key="navAbout">About Us</a>
+                <a href="#products" class="text-gray-600 hover:text-gray-900" data-lang-key="navProducts">Products</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900" data-lang-key="navContact">Contact Us</a>
+            </div>
+            <!-- F1: Bilingual Support -->
+            <div class="flex items-center">
+                <button id="lang-switcher" class="border px-3 py-1 rounded-full text-sm font-semibold">
+                    <span class="text-gray-900">ENG</span> / <span class="text-gray-400">KOR</span>
+                </button>
+                <!-- Mobile menu button can be added here -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- F3: Hero Section -->
+        <section id="hero" class="h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('https://via.placeholder.com/1920x1080/4A5568/FFFFFF?text=Global+Trade+Background');">
+            <div class="text-center bg-black/50 p-8 rounded-lg">
+                <h1 class="text-5xl font-extrabold mb-4" data-lang-key="heroTitle">Connecting Markets, Creating Value</h1>
+                <p class="text-xl mb-8" data-lang-key="heroSubtitle">Your Trusted Partner in Global Trade</p>
+                <a href="#products" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg" data-lang-key="heroCTA">Explore Products</a>
+            </div>
+        </section>
+
+        <!-- F4: About Us Section -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4" data-lang-key="aboutTitle">About Us</h2>
+                <p class="max-w-3xl mx-auto mb-12 text-gray-600" data-lang-key="aboutMission">Our mission is to bridge global markets by providing exceptional trading solutions, ensuring quality, reliability, and value for our partners worldwide.</p>
+                <h3 class="text-3xl font-bold mb-10" data-lang-key="aboutStrengthTitle">Our Strengths</h3>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Strength 1 -->
+                    <div class="text-center">
+                        <div class="text-blue-600 mb-4"> <!-- Placeholder for icon -->
+                            <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength1Title">Global Network</h4>
+                        <p class="text-gray-600" data-lang-key="strength1Desc">Access to a vast network of suppliers and buyers across the globe.</p>
+                    </div>
+                    <!-- Strength 2 -->
+                    <div class="text-center">
+                         <div class="text-blue-600 mb-4"> <!-- Placeholder for icon -->
+                            <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength2Title">Quality Assurance</h4>
+                        <p class="text-gray-600" data-lang-key="strength2Desc">Rigorous quality control processes to ensure product excellence.</p>
+                    </div>
+                    <!-- Strength 3 -->
+                    <div class="text-center">
+                         <div class="text-blue-600 mb-4"> <!-- Placeholder for icon -->
+                            <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-lang-key="strength3Title">Expert Team</h4>
+                        <p class="text-gray-600" data-lang-key="strength3Desc">Experienced professionals dedicated to your success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- F5: Products Section -->
+        <section id="products" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4" data-lang-key="productsTitle">Our Products</h2>
+                <p class="max-w-3xl mx-auto mb-12 text-gray-600" data-lang-key="productsIntro">We handle a diverse range of high-quality products to meet the needs of various industries.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Product Category 1 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/400x300/9FA6B2/FFFFFF?text=Industrial+Machinery" alt="Industrial Machinery" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold" data-lang-key="productCat1">Industrial Machinery</h3>
+                        </div>
+                    </div>
+                    <!-- Product Category 2 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/400x300/9FA6B2/FFFFFF?text=Consumer+Electronics" alt="Consumer Electronics" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold" data-lang-key="productCat2">Consumer Electronics</h3>
+                        </div>
+                    </div>
+                    <!-- Product Category 3 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/400x300/9FA6B2/FFFFFF?text=Beauty+&+Cosmetics" alt="Beauty & Cosmetics" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold" data-lang-key="productCat3">Beauty & Cosmetics</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- F6: Contact Us Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-10" data-lang-key="contactTitle">Contact Us</h2>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+                    <!-- Inquiry Form -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4" data-lang-key="contactFormTitle">Send us a message</h3>
+                        <form action="#" method="POST">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2" data-lang-key="formName">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="company" class="block text-gray-700 font-medium mb-2" data-lang-key="formCompany">Company Name</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2" data-lang-key="formEmail">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 font-medium mb-2" data-lang-key="formMessage">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg" data-lang-key="formSubmit">Submit Inquiry</button>
+                        </form>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="md:mt-12">
+                         <h3 class="text-2xl font-semibold mb-4" data-lang-key="contactInfoTitle">Contact Information</h3>
+                         <p class="text-lg mb-2" data-lang-key="contactAddress"><strong>Address:</strong> 123 Global Trade Center, Seoul, South Korea</p>
+                         <p class="text-lg mb-2" data-lang-key="contactPhone"><strong>Phone:</strong> +82 2-1234-5678</p>
+                         <p class="text-lg mb-4" data-lang-key="contactEmail"><strong>Email:</strong> contact@globaltradesolutions.com</p>
+                         <!-- Optional Map -->
+                         <div class="h-64 bg-gray-300 rounded-lg flex items-center justify-center text-gray-500">
+                            Map Placeholder
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- F7: Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 <span data-lang-key="companyName">Global Trade Solutions</span>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
